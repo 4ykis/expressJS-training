@@ -1,0 +1,27 @@
+{
+  "name": "express-js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "cross-env PORT=8080 node index.js",
+    "dev": "nodemon index.js"
+  },
+  "author": "4yk",
+  "license": "ISC",
+  "devDependencies": {
+    "cross-env": "^5.2.0",
+    "ejs": "^2.6.1",
+    "eslint": "^5.7.0",
+    "eslint-config-prettier": "^3.1.0",
+    "eslint-plugin-node": "^7.0.1",
+    "nodemon": "^1.18.4"
+  },
+  "engines": {
+    "node": ">=6.0.0"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4"
+  }
+}
