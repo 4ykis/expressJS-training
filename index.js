@@ -1,27 +1,17 @@
-const express = require('express');
-const bodyParser = require('body-parser');
+const app = require('./app');
+const db = require('./database');
 const config = require('./config');
 
-const app = express();
 
-app.set('view engine', 'ejs');
-app.use(bodyParser.urlencoded({ extended: true }));
-
-const arr = ['hello', 'world', 'test'];
-
-app.get('/', (req, res) => {
-    res.render('index', { arr: arr });
-});
-
-app.get('/create', (req, res) => {
-    res.render('create', {});
-});
-
-app.post('/create', (req, res) => {
-    arr.push(req.body.text);
-    res.redirect('/');
-});
-
-app.listen(config.PORT, () => {
-    console.log(`Server start on port ${config.PORT}`)
+db().then(info => {
+    if (info) {
+        console.log(`Connection to ${info.host}:${info.port}/${info.name}`);
+    }
+    app.listen(config.PORT, () => {
+        console.log(`Server start on port ${config.PORT}`)
+    });
+}).catch((error) => {
+    console.error('Unable to coonect to DB');
+    console.log(error);
+    process.exit(1);
 });
