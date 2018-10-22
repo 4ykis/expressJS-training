@@ -11,11 +11,13 @@
 <body>
     <a href="/create">LINK</a>
     <ul>
-        <% arr.forEach(function(item){ %>
+        <% posts.forEach(function(item){ %>
             <li>
-                <%= item %>
+                <h3><%= item.title %></h3>
+                <p><%= item.body %></p>
+                <p><%= item.createdAt %> </p>
             </li>
-            <% }); %>
+        <% }); %>
     </ul>
 </body>
 
